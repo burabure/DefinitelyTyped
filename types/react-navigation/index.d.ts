@@ -670,6 +670,22 @@ export class Transitioner extends React.Component<
 > { }
 
 /**
+ * CardStackTransitioner
+ * @desc From react-navigation/src/views/CardStack/CardStackTransitioner.js
+ */
+export type CardStackTransitionerProps = {
+  headerMode: HeaderMode,
+  mode: 'card' | 'modal',
+  router: NavigationRouter<NavigationState, NavigationStackScreenOptions, any>,
+  cardStyle?: StyleProp<ViewStyle>,
+  onTransitionStart?: () => void,
+  onTransitionEnd?: () => void,
+  transitionConfig?: () => TransitionConfig,
+} & NavigationNavigatorProps<NavigationStackScreenOptions>;
+
+export const CardStackTransitioner: React.ComponentType<CardStackTransitionerProps>;
+
+/**
  * Tab Router
  *
  * @desc from react-navigation/src/routers/TabRouter.js
@@ -699,7 +715,7 @@ export function createNavigator<C, S, A, Options>(
   routeConfigs?: NavigationRouteConfigMap,
   navigatorConfig?: {} | null,
   navigatorType?: NavigatorType
-): (NavigationView: React.ComponentClass<C>) => NavigationNavigator<C, S, A, Options>;
+): (NavigationView: React.ComponentType<C>) => NavigationNavigator<C, S, A, Options>;
 
 /**
  * Create an HOC that injects the navigation and manages the navigation state
